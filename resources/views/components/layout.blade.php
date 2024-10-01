@@ -31,6 +31,7 @@
               <x-nav-link href="/home" :active="request()->is('home')" type="a">Home</x-nav-link>
               <x-nav-link href="/jobs" :active="request()->is('jobs')" type="a">Jobs</x-nav-link>
               <x-nav-link href="/contact" :active="request()->is('contact')" type="a">Contact</x-nav-link>
+              <x-nav-link href="/comments" :active="request()->is('comments')" type="a">Comments</x-nav-link>
             </div>
           </div>
         </div>

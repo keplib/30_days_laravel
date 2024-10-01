@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
+use App\Models\Comment;
 
 Route::get('/home', function () {
     return view('home', [
@@ -22,6 +23,19 @@ Route::get('/jobs', function () {
         'jobs' => Job::all()
     ]);
 });
+
+Route::get('/comments', function () {
+    return view('comments', [
+        'comments' => Comment::all()
+    ]);
+});
+
+Route::get('/comments/{id}', function ($id) {
+    return view('comment', [
+        'comment' => Comment::find($id)
+    ]);
+});
+
 
 Route::get('/jobs/{id}', function ($id) {
 
