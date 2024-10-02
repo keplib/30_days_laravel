@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Department>
  */
-class CommentFactory extends Factory
+class DepartmentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +17,7 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->title(),
-            'body' => fake()->text(),
-            'user_id' => User::factory()
+            'department_name' => fake()->company()
         ];
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 use App\Models\Comment;
+use App\Models\Department;
 
 Route::get('/home', function () {
     return view('home', [
@@ -24,21 +25,19 @@ Route::get('/jobs', function () {
     ]);
 });
 
-Route::get('/comments', function () {
-    return view('comments', [
-        'comments' => Comment::all()
-    ]);
-});
-
-Route::get('/comments/{id}', function ($id) {
-    return view('comment', [
-        'comment' => Comment::find($id)
-    ]);
-});
-
-
 Route::get('/jobs/{id}', function ($id) {
 
     return view('job', ['job' => Job::find($id)]);
+});
+
+Route::get('/departments', function () {
+    return view('departments', ['departments' => Department::all()]);
+});
+
+Route::get('/departments/{id}', function ($id) {
+
+    $employees = Department::find($id)->employees;
+
+    return view('department', ['employees' => $employees]);
 });
 
