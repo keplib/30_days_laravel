@@ -21,20 +21,40 @@ Route::get('/contact', function () {
 
 Route::get('/jobs', function () {
 
-    $jobs = Job::with('employer')->simplePaginate(3);
+    $jobs = Job::with('employer')->latest()->simplePaginate(3);
 
-    return view('jobs', [
+    return view('jobs/index', [
         'jobs' => $jobs
     ]);
 });
 
+Route::get('/jobs/create', function () {
+    return view('jobs/create');
+});
+
 Route::get('/jobs/{id}', function ($id) {
 
-    return view('job', ['job' => Job::find($id)]);
+    return view('jobs/show', ['job' => Job::find($id)]);
 });
 
 Route::get('/departments', function () {
     return view('departments', ['departments' => Department::all()]);
+});
+
+Route::post('/jobs', function () {
+
+    request()->validate([
+        'title'=> ['required', 'min:3'],
+        'salary'=> ['required'],
+    ]);
+
+    Job::create([
+        'title' => request('title'),
+        'salary' => request('salary'),
+        'employer_id' => 1
+    ]);
+
+    return redirect('/jobs');
 });
 
 Route::get('/departments/{id}', function ($id) {
