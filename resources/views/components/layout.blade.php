@@ -39,7 +39,7 @@
           <div class="ml-4 flex items-center md:ml-6">
                 @guest
                     <x-nav-link href="/login" :active="request()->is('login')" type="a">Login</x-nav-link>
-                    <x-nav-link href="/resgister" :active="request()->is('register')" type="a">Register</x-nav-link>
+                    <x-nav-link href="/register" :active="request()->is('register')" type="a">Register</x-nav-link>
                 @endguest
                 @auth
                     <form action="/logout" method="POST">

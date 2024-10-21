@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Author;
 use App\Models\BlogPost;
 use App\Models\Category;
+use App\Models\Job;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,6 +18,11 @@ class DatabaseSeeder extends Seeder
 
         // Create 10 tags
         $categories = Category::factory()->count(10)->create();
+
+        // Create 10 Jobs
+        Job::factory()->count(10)->create();
+
+        //
 
         // For each author, create blogposts and attach tags to the blogposts
         $authors->each(function ($author) use ($categories) {
